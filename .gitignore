@@ -1,0 +1,74 @@
+Arquivos de Ignorar Padrão do Visual Studio/JetBrains/Visual Studio Code
+Este arquivo ignora binários, objetos, caches, pacotes NuGet e logs.
+##################################
+
+IGNORE ARQUIVOS DE BUILD & BINÁRIOS
+##################################
+
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+*.log
+*.scc
+*.user
+*.pdb
+*.suo
+*.ipch
+
+Binários do .NET Core
+**/bin/
+**/obj/
+
+##################################
+
+IGNORE FERRAMENTAS & CACHE
+##################################
+
+Pacotes NuGet
+*.nupkg
+
+Cache de restauração do NuGet
+.nuget/packages/
+.nuget/artifacts/
+
+Diretórios de pacotes temporários
+packages/
+
+Arquivos de Ferramenta
+.vs/
+.vspscc
+.vssscc
+
+##################################
+
+IGNORE DADOS LOCAIS & CONFIGURAÇÕES
+##################################
+
+Logs de teste e cobertura de código
+TestResults/
+coverlet/
+
+Arquivos de configuração de usuário do Visual Studio Code
+.vscode/
+
+Arquivos de Dados de Runtime do Entity Framework Core
+*.db
+*.sqlite
+*.mdf
+*.ldf
+
+Se usar Entity Framework Migrations (se não quiser comitar a pasta Migrations)
+[NomeDoSeuProjeto]/Migrations/
+##################################
+
+IGNORE CONFIGURAÇÕES DE AMBIENTE LOCAL
+##################################
+
+Arquivos que contêm segredos ou configurações locais (ex: strings de conexão)
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json
+
+Pode ser necessário adicionar mais arquivos de configuração se você usa um padrão diferente
+*.json.local
