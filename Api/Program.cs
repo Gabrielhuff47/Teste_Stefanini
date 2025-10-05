@@ -1,4 +1,7 @@
 using Api.Infraestrutura.Data.Context;
+using Api.Infraestrutura.Interfaces;
+using Api.Infraestrutura.Repositorio;
+using Api.Servico;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +15,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<CadastroPessoasDBContexto>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IPessoaRepositorio, PessoaRepositorio>();
+builder.Services.AddScoped<PessoaServico>();
     
 var app = builder.Build();
 
