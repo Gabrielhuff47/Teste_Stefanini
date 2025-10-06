@@ -5,7 +5,7 @@ using Api.Servico;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddTransient<TokenServico>();
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -18,6 +18,8 @@ builder.Services.AddDbContext<CadastroPessoasDBContexto>(options =>
 
 builder.Services.AddScoped<IPessoaRepositorio, PessoaRepositorio>();
 builder.Services.AddScoped<PessoaServico>();
+builder.Services.AddScoped<IAutenticacaoRepositorio, AutenticacaoRepositorio>();
+builder.Services.AddScoped<AutenticacaoServico>();
     
 var app = builder.Build();
 
