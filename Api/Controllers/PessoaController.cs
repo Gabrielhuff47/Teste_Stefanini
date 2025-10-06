@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Api.Infraestrutura.Dominio;
 using Api.Model;
 using Api.Servico;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -14,13 +15,14 @@ namespace Api.Controllers
     public class PessoaController : ControllerBase
     {
         private readonly PessoaServico _pessoaServico;
-
+        
         public PessoaController(PessoaServico pessoaServico)
         {
             _pessoaServico = pessoaServico;
         }
 
         [HttpPost("CadastrarPessoa")]
+        [Authorize]
         public async Task<IActionResult> CadastrarPessoa([FromBody] PessoaModel request)
         {
 
@@ -30,6 +32,7 @@ namespace Api.Controllers
         }
 
         [HttpGet("{idPessoa}")]
+        [Authorize]
         public async Task<IActionResult> ObterPessoaPorId(int idPessoa)
         {
             var pessoa = await _pessoaServico.ObterPessoaPorId(idPessoa);
@@ -40,6 +43,7 @@ namespace Api.Controllers
         }
 
         [HttpGet("ObterPessoas")]
+        [Authorize]
         public async Task<IEnumerable<PessoaModel>> Get()
         {
             var pessoas = await _pessoaServico.BuscarPessoas();
@@ -48,6 +52,7 @@ namespace Api.Controllers
         }
 
         [HttpPut("AtualizarPessoa")]
+        [Authorize]
         public async Task<IActionResult> AtualizarPessoa([FromBody] PessoaDominio request)
         {
             var pessoaAtualizada = await _pessoaServico.AtualizarPessoaPorId(request);
@@ -56,6 +61,7 @@ namespace Api.Controllers
         }
 
         [HttpDelete("DeletarPessoa/{idPessoa}")]
+        [Authorize]
         public async Task<IActionResult> DeletarPessoaPorId(int idPessoa)
         {
             await _pessoaServico.DeletarPessoaPorId(idPessoa);
