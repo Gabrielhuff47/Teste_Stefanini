@@ -9,6 +9,7 @@ public class CadastroPessoasDBContexto : DbContext
     { }
 
     public DbSet<PessoaDominio> Pessoas { get; set; }
+    public DbSet<UsuarioDominio> Usuarios { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
